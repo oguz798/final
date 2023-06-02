@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 namespace Interactions {
     public class DoorOpen : MonoBehaviour
     {
-
+        [SerializeField] private GameObject player;
         private Animator doorAnim;
         private bool isDoorOpen = false;
 
@@ -56,8 +56,10 @@ namespace Interactions {
         }
         private IEnumerator TextDestroy()
         {
+            player.SetActive(false);
             yield return new WaitForSeconds(1.0f);
             textObject.SetActive(false);
+            player.SetActive(true);
         }
 
         public void NoKeyDoor()

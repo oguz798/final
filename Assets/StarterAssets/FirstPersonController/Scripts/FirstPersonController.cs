@@ -71,6 +71,7 @@ namespace StarterAssets
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
+		public AudioSource footstepsSound;
 
 		private const float _threshold = 0.01f;
 
@@ -115,6 +116,7 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			FootSteps();
 		}
 
 		private void LateUpdate()
@@ -150,7 +152,19 @@ namespace StarterAssets
 				transform.Rotate(Vector3.up * _rotationVelocity);
 			}
 		}
+		private void FootSteps()
+        {
+			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+			{		
+				footstepsSound.enabled = true;
+			}
+			else
+			{
+				footstepsSound.enabled = false;
 
+			}
+		}
+	
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
