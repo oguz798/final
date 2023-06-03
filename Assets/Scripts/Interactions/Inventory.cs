@@ -6,7 +6,8 @@ namespace Interactions
 {
     public class Inventory : MonoBehaviour
     {
-        public bool hasKey = false;
+        public bool hasKeyBedroom = false;
+        public bool hasKeyRoom = false;
         public bool hasFlashLight = false;
     }
 }

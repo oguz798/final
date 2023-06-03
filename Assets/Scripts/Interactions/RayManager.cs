@@ -8,31 +8,47 @@ namespace Interactions
     public class RayManager : MonoBehaviour
     {
         [SerializeField] private bool noKeyDoor = false;
-        [SerializeField] private bool bathroomDoor = false;
-        [SerializeField] private bool keyObj = false;
+        [SerializeField] private bool bedroomDoor = false;
+        [SerializeField] private bool roomDoor = false;
+        [SerializeField] private bool keyRoom = false;
+        [SerializeField] private bool keyBedroom = false;
         [SerializeField] private bool flashLight = false;
+        [SerializeField] private bool notepad = false;
 
         [SerializeField] private Inventory inventory;
 
         private DoorOpen doorObject;
+        private NotePickup noteObject;
 
         private void Start()
         {
-            if (bathroomDoor || noKeyDoor)
+            if (bedroomDoor || noKeyDoor || roomDoor)
             {
                 doorObject = GetComponent<DoorOpen>();
-            }         
+            } 
+            else if (notepad)
+            {
+                noteObject = GetComponent<NotePickup>();
+            }
         }
         public void OnInteraction()
         {
-            if (bathroomDoor)
+            if (bedroomDoor)
             {
-                doorObject.PlayAnimation();
+                doorObject.KeyBedroom();
             }
-            else if (keyObj)
+            else if(roomDoor)
             {
-                inventory.hasKey = true;
-                Debug.Log(gameObject);
+                doorObject.KeyRoom();
+            }
+            else if (keyRoom)
+            {
+                inventory.hasKeyRoom = true;
+                gameObject.SetActive(false);
+            }
+            else if (keyBedroom)
+            {
+                inventory.hasKeyBedroom = true;
                 gameObject.SetActive(false);
             }
             else if (flashLight)
@@ -44,6 +60,18 @@ namespace Interactions
             else if (noKeyDoor)
             {
                 doorObject.NoKeyDoor();
+            }
+            else if (notepad)
+            {
+                if (!noteObject.isOpen)
+                {
+                    noteObject.ShowNote();
+                }
+                else
+                {
+                    noteObject.DisableNote();
+
+                }
             }
         }
       

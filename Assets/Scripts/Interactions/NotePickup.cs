@@ -1,18 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class NotePickup : MonoBehaviour
+namespace Interactions
 {
-    // Start is called before the first frame update
-    void Start()
+    public class NotePickup : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private GameObject player;
+        [SerializeField] private AudioSource noteSound;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [Header("UI Text")]
+        [SerializeField] private GameObject noteCanvas;
+        [SerializeField] private TMP_Text noteTextUI;
+        [SerializeField] private GameObject cameraOverlay;
+
+        [SerializeField] [TextArea] private string noteText;
+
+        public bool isOpen = false;
+
+        public void ShowNote()
+        {
+
+            noteTextUI.text = noteText;
+            noteCanvas.SetActive(true);
+            cameraOverlay.SetActive(false);
+            isOpen = true;
+            player.SetActive(false);
+
+        }
+
+        public void DisableNote()
+        {
+            noteCanvas.SetActive(false);
+            cameraOverlay.SetActive(true);
+            isOpen = false;
+            player.SetActive(true);
+        }
     }
 }

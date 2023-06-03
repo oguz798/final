@@ -10,9 +10,11 @@ namespace Interactions {
         [SerializeField] private GameObject player;
         private Animator doorAnim;
         private bool isDoorOpen = false;
+        private RayManager whichDoor;
 
         [SerializeField] private Inventory inventory = null;
         [SerializeField] private GameObject textObject;
+        
         private bool firstTime = false;
 
         private void Awake()
@@ -22,10 +24,10 @@ namespace Interactions {
         }
         // Update is called once per frame
 
-        public void PlayAnimation()
+        public void KeyRoom()
         {
             textObject.SetActive(true);
-            if (inventory.hasKey)
+            if (inventory.hasKeyRoom)
             {
                 if (!isDoorOpen)
                 {
@@ -35,9 +37,41 @@ namespace Interactions {
                         firstTime = true;
                     }
                     
-                    doorAnim.Play("DoorOpen", 0, 0.0f);
+                    doorAnim.Play("RoomOpen", 0, 0.0f);
                     StartCoroutine(TextDestroy());
                     isDoorOpen = true;               
+                }
+                else
+                {
+                    textObject.GetComponent<Text>().text = "";
+                    doorAnim.Play("RoomClose", 0, 0.0f);
+                    isDoorOpen = false;
+                    StartCoroutine(TextDestroy());
+                }       
+            }
+            else
+            {
+                textObject.GetComponent<Text>().text = "Door is locked";
+                StartCoroutine(TextDestroy());
+
+            }
+        }
+        public void KeyBedroom()
+        {
+            textObject.SetActive(true);
+            if (inventory.hasKeyBedroom)
+            {
+                if (!isDoorOpen)
+                {
+                    if (!firstTime)
+                    {
+                        textObject.GetComponent<Text>().text = "Inserted the key";
+                        firstTime = true;
+                    }
+
+                    doorAnim.Play("DoorOpen", 0, 0.0f);
+                    StartCoroutine(TextDestroy());
+                    isDoorOpen = true;
                 }
                 else
                 {
@@ -45,7 +79,7 @@ namespace Interactions {
                     doorAnim.Play("DoorClose", 0, 0.0f);
                     isDoorOpen = false;
                     StartCoroutine(TextDestroy());
-                }       
+                }
             }
             else
             {
