@@ -10,7 +10,7 @@ namespace Interactions
     {
         [SerializeField] private GameObject player;
         [SerializeField] private AudioSource noteSound;
-
+       
         [Header("UI Text")]
         [SerializeField] private GameObject noteCanvas;
         [SerializeField] private TMP_Text noteTextUI;
@@ -19,6 +19,7 @@ namespace Interactions
         [SerializeField] [TextArea] private string noteText;
 
         public bool isOpen = false;
+        public bool triggerEvent=false;
 
         public void ShowNote()
         {
@@ -26,6 +27,7 @@ namespace Interactions
             noteTextUI.text = noteText;
             noteCanvas.SetActive(true);
             cameraOverlay.SetActive(false);
+            noteSound.Play();
             isOpen = true;
             player.SetActive(false);
 
@@ -37,6 +39,7 @@ namespace Interactions
             cameraOverlay.SetActive(true);
             isOpen = false;
             player.SetActive(true);
+            triggerEvent = true;
         }
     }
 }

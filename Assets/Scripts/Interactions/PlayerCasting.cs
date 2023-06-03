@@ -12,6 +12,7 @@ namespace Interactions
 
         [SerializeField] private GameObject actionText;
         [SerializeField] private GameObject crossHair;
+
         private bool isTextActive;
         private bool doOnce;
 

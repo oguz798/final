@@ -1,52 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8339078152551804069
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
-  m_Name: Bloom
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  intensity:
-    overrideState: 1
-    value: 362.5
-  threshold:
-    overrideState: 1
-    value: 0
-  softKnee:
-    overrideState: 1
-    value: 0.37
-  clamp:
-    overrideState: 1
-    value: 65471.7
-  diffusion:
-    overrideState: 1
-    value: 4.3
-  anamorphicRatio:
-    overrideState: 1
-    value: 0
-  color:
-    overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 1}
-  fastMode:
-    overrideState: 0
-    value: 0
-  dirtTexture:
-    overrideState: 1
-    value: {fileID: 0}
-    defaultState: 1
-  dirtIntensity:
-    overrideState: 1
-    value: 0
 --- !u!114 &-1248650646935286409
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -106,7 +59,7 @@ MonoBehaviour:
     value: 0
   colorFilter:
     overrideState: 1
-    value: {r: 0.3133435, g: 0.2806604, b: 0.5, a: 1}
+    value: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
   hueShift:
     overrideState: 1
     value: 0
@@ -123,13 +76,13 @@ MonoBehaviour:
     overrideState: 1
     value: 9
   mixerRedOutRedIn:
-    overrideState: 1
+    overrideState: 0
     value: 100
   mixerRedOutGreenIn:
-    overrideState: 1
+    overrideState: 0
     value: 0
   mixerRedOutBlueIn:
-    overrideState: 1
+    overrideState: 0
     value: 0
   mixerGreenOutRedIn:
     overrideState: 0
@@ -1378,8 +1331,8 @@ MonoBehaviour:
     overrideState: 1
     value: 0
   color:
-    overrideState: 1
-    value: {r: 0, g: 0, b: 0, a: 1}
+    overrideState: 0
+    value: {r: 0.6117647, g: 0.2784314, b: 0.9960785, a: 1}
   center:
     overrideState: 1
     value: {x: 0.5, y: 0.5}
@@ -1394,7 +1347,7 @@ MonoBehaviour:
     value: 1
   rounded:
     overrideState: 1
-    value: 0
+    value: 1
   mask:
     overrideState: 0
     value: {fileID: 0}
@@ -1418,7 +1371,7 @@ MonoBehaviour:
   - {fileID: 5383640056396264679}
   - {fileID: -1248650646935286409}
   - {fileID: 1517645540446146852}
-  - {fileID: -8339078152551804069}
+  - {fileID: 6447755362824136752}
   - {fileID: -1103568286299200548}
 --- !u!114 &1517645540446146852
 MonoBehaviour:
@@ -1438,7 +1391,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 16.12
+    value: 24.54
   intensityX:
     overrideState: 1
     value: 1
@@ -1475,7 +1428,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 3.43
+    value: 1.01
   color:
     overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -1493,7 +1446,7 @@ MonoBehaviour:
     value: -12
   thicknessModifier:
     overrideState: 1
-    value: 2.9
+    value: 2.6
   directLightingStrength:
     overrideState: 0
     value: 0
@@ -1503,3 +1456,50 @@ MonoBehaviour:
   quality:
     overrideState: 0
     value: 2
+--- !u!114 &6447755362824136752
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 0
+  enabled:
+    overrideState: 1
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 21.9
+  threshold:
+    overrideState: 1
+    value: 0.3
+  softKnee:
+    overrideState: 1
+    value: 0.55
+  clamp:
+    overrideState: 1
+    value: 65472.06
+  diffusion:
+    overrideState: 1
+    value: 5.43
+  anamorphicRatio:
+    overrideState: 1
+    value: -0.3
+  color:
+    overrideState: 0
+    value: {r: 0.33245158, g: 0.06301003, b: 0.9911022, a: 1}
+  fastMode:
+    overrideState: 0
+    value: 0
+  dirtTexture:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  dirtIntensity:
+    overrideState: 0
+    value: 0

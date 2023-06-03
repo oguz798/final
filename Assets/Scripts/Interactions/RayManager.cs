@@ -20,6 +20,9 @@ namespace Interactions
         private DoorOpen doorObject;
         private NotePickup noteObject;
 
+        [SerializeField] private GameObject notificationText;
+        private string text;
+
         private void Start()
         {
             if (bedroomDoor || noKeyDoor || roomDoor)
@@ -43,13 +46,16 @@ namespace Interactions
             }
             else if (keyRoom)
             {
-                inventory.hasKeyRoom = true;
-                gameObject.SetActive(false);
+                inventory.hasKeyRoom = true;    
+                text = "I picked up the small bedroom key.";
+                StartCoroutine(Notification());
+
             }
             else if (keyBedroom)
             {
                 inventory.hasKeyBedroom = true;
-                gameObject.SetActive(false);
+                text = "I picked up the main bedroom key.";
+                StartCoroutine(Notification());
             }
             else if (flashLight)
             {
@@ -74,6 +80,17 @@ namespace Interactions
                 }
             }
         }
-      
+
+        private IEnumerator Notification()
+        {
+            notificationText.GetComponent<Text>().text = text;
+            notificationText.SetActive(true);
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            yield return new WaitForSeconds(2.0f);
+            notificationText.SetActive(false);
+            notificationText.GetComponent<Text>().text = "";
+            gameObject.SetActive(false);
+        }
+
     }
 }
