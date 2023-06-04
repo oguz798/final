@@ -16,10 +16,8 @@ namespace Interactions
         public void DoorSlam()
         {
             doorObj.GetComponent<AudioSource>().Play();
-            doorObj.GetComponent<Animator>().Play("MainDoorClose");
-            
+            doorObj.GetComponent<Animator>().Play("MainDoorClose");          
             text = "The door closed!";
-
             StartCoroutine(Notification());
 
         }
@@ -27,7 +25,6 @@ namespace Interactions
         {
             bedroomObj.GetComponent<AudioSource>().Play();
             bedroomObj.GetComponent<Animator>().Play("BedroomClose");
-            text = "The door closed!";
             StartCoroutine(Notification());
         }
 
@@ -42,7 +39,7 @@ namespace Interactions
         }
         public void MainDoorInteraction()
         {
-            text = "Door is locked!!";
+            text = "Door is locked!! How can get out of here?";
             StartCoroutine(Notification());
         }
         public void AltarnateAnimation()
