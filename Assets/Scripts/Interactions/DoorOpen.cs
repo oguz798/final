@@ -26,19 +26,13 @@ namespace Interactions {
 
         public void KeyRoom()
         {
+            textObject.GetComponent<Text>().text = "";
             textObject.SetActive(true);
             if (inventory.hasKeyRoom)
             {
                 if (!isDoorOpen)
-                {
-                    if (!firstTime) 
-                    {
-                        textObject.GetComponent<Text>().text = "Inserted the key";
-                        firstTime = true;
-                    }
-                    
+                {                   
                     doorAnim.Play("RoomOpen", 0, 0.0f);
-                    StartCoroutine(TextDestroy());
                     isDoorOpen = true;               
                 }
                 else
@@ -46,7 +40,6 @@ namespace Interactions {
                     textObject.GetComponent<Text>().text = "";
                     doorAnim.Play("RoomClose", 0, 0.0f);
                     isDoorOpen = false;
-                    StartCoroutine(TextDestroy());
                 }       
             }
             else
@@ -58,19 +51,13 @@ namespace Interactions {
         }
         public void KeyBedroom()
         {
+            textObject.GetComponent<Text>().text = "";
             textObject.SetActive(true);
             if (inventory.hasKeyBedroom)
             {
                 if (!isDoorOpen)
                 {
-                    if (!firstTime)
-                    {
-                        textObject.GetComponent<Text>().text = "Inserted the key";
-                        firstTime = true;
-                    }
-
                     doorAnim.Play("Bedroom", 0, 0.0f);
-                    StartCoroutine(TextDestroy());
                     isDoorOpen = true;
                 }
                 else
@@ -78,7 +65,6 @@ namespace Interactions {
                     textObject.GetComponent<Text>().text = "";
                     doorAnim.Play("BedroomClose", 0, 0.0f);
                     isDoorOpen = false;
-                    StartCoroutine(TextDestroy());
                 }
             }
             else
@@ -90,10 +76,9 @@ namespace Interactions {
         }
         private IEnumerator TextDestroy()
         {
-            player.SetActive(false);
+            textObject.SetActive(true);
             yield return new WaitForSeconds(1.0f);
             textObject.SetActive(false);
-            player.SetActive(true);
         }
 
         public void NoKeyDoor()

@@ -17,6 +17,9 @@ public class TelevisionScare : MonoBehaviour
     [SerializeField] private GameObject audioSource;
     [SerializeField] private AudioClip ambientClip;
     [SerializeField] private Light flashLight;
+    [SerializeField] private AudioSource psst;
+    [SerializeField] private GameObject altarnateObj;
+    [SerializeField] private AudioSource jumpscare;
 
     [SerializeField] private Material[] mats;
 
@@ -52,7 +55,6 @@ public class TelevisionScare : MonoBehaviour
         tvLight.color = Color.white;
         tvLight.intensity = 3.0f;
         audioClip.volume = 0.2f;
-        Camera.main.fieldOfView= 30;
         player.SetActive(false);
         videoPlayer.clip = myclip;
         videoPlayer.isLooping = false;
@@ -64,14 +66,20 @@ public class TelevisionScare : MonoBehaviour
 
     private IEnumerator VideoPlaying()
     {
-        while (videoPlayer.isPlaying)
+        while (false)
         {
             yield return null;
         }
-
-        player.SetActive(true);
+        altarnateObj.SetActive(true);
+        psst.Play();      
+        yield return new WaitForSeconds(1.5f);
+        mainCamera.transform.LookAt(altarnateObj.GetComponentInChildren<Light>().transform);
+        jumpscare.Play();
+        yield return new WaitForSeconds(1.0f);
+        player.SetActive(true);        
         tvLight.intensity = 0;
-            
+        altarnateObj.SetActive(false);
+        EnviromentChange();      
     }
 
     public void EnviromentChange()

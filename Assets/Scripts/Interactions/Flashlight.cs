@@ -69,7 +69,7 @@ namespace Interactions
 			textObject.GetComponent<Text>().text = "Press 'F' to on/off the flashlight";
 			textObject.SetActive(true);
 
-			yield return new WaitForSeconds(3.0f);
+			yield return new WaitForSeconds(1.0f);
 			textObject.SetActive(false);
 			textObject.GetComponent<Text>().text = "";
 

@@ -16,6 +16,8 @@ namespace Interactions
         [SerializeField] private bool notepad = false;
         [SerializeField] private bool pistol = false;
 
+        [SerializeField] private AudioSource key;
+
         [SerializeField] private Inventory inventory;
 
         private DoorOpen doorObject;
@@ -52,6 +54,7 @@ namespace Interactions
             }
             else if (keyRoom)
             {
+                key.Play();
                 inventory.hasKeyRoom = true;    
                 text = "I picked up the small bedroom key.";
                 StartCoroutine(Notification());
@@ -59,6 +62,7 @@ namespace Interactions
             }
             else if (keyBedroom)
             {
+                key.Play();
                 inventory.hasKeyBedroom = true;
                 text = "I picked up the main bedroom key.";
                 StartCoroutine(Notification());
