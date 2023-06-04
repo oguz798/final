@@ -26,7 +26,12 @@ namespace Interactions
         }
         private void OnTriggerExit(Collider other)
         {
-            myTriggerExit.Invoke();
+            if (isTriggered)
+            {
+                myTriggerExit.Invoke();
+                isTriggered = false;
+            }
+            
         }
 
     }

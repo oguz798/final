@@ -14,11 +14,13 @@ namespace Interactions
         [SerializeField] private bool keyBedroom = false;
         [SerializeField] private bool flashLight = false;
         [SerializeField] private bool notepad = false;
+        [SerializeField] private bool pistol = false;
 
         [SerializeField] private Inventory inventory;
 
         private DoorOpen doorObject;
         private NotePickup noteObject;
+        private PistolPickup pistolObject;
 
         [SerializeField] private GameObject notificationText;
         private string text;
@@ -32,6 +34,10 @@ namespace Interactions
             else if (notepad)
             {
                 noteObject = GetComponent<NotePickup>();
+            }
+            else if (pistol)
+            {
+                pistolObject = GetComponent<PistolPickup>();
             }
         }
         public void OnInteraction()
@@ -78,6 +84,10 @@ namespace Interactions
                     noteObject.DisableNote();
 
                 }
+            }
+            else if (pistol)
+            {
+                pistolObject.Ending();
             }
         }
 

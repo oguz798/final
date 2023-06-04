@@ -13,6 +13,12 @@ public class TelevisionScare : MonoBehaviour
     [SerializeField] private VideoClip myclip;
     [SerializeField] private GameObject postProcess;
     [SerializeField] private GameObject lights;
+    [SerializeField] private GameObject ambienceMusic;
+    [SerializeField] private GameObject audioSource;
+    [SerializeField] private AudioClip ambientClip;
+    [SerializeField] private Light flashLight;
+
+    [SerializeField] private Material[] mats;
 
     private Component[] light;
 
@@ -30,6 +36,14 @@ public class TelevisionScare : MonoBehaviour
         audioClip = television.GetComponentInChildren<AudioSource>();
 
         light = lights.GetComponentsInChildren<Light>();
+
+        Color newCol;
+        foreach (Material light in mats)
+        {
+            
+            if (ColorUtility.TryParseHtmlString("7D2EFE", out newCol))
+                light.color = newCol;
+        }
     }
 
     public void TelevisionEvent()
@@ -69,6 +83,16 @@ public class TelevisionScare : MonoBehaviour
         {
             light.color = Color.red;
         }
+
+        foreach(Material light in mats)
+        {
+            light.color = Color.red;
+            light.EnableKeyword("_EMISSION");
+        }
+
+        flashLight.color = Color.red;
+
+        audioSource.GetComponent<AudioSource>().clip = ambientClip;
     }
 
 }

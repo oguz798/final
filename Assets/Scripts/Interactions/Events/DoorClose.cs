@@ -9,13 +9,25 @@ namespace Interactions
     {
         [SerializeField] private GameObject doorObj;
         [SerializeField] private GameObject notificationText;
+        [SerializeField] private GameObject altarnate;
+        [SerializeField] private GameObject bedroomObj;
         private string text;
         
         public void DoorSlam()
         {
             doorObj.GetComponent<AudioSource>().Play();
             doorObj.GetComponent<Animator>().Play("MainDoorClose");
-            text = "The main door closed!";
+            
+            text = "The door closed!";
+
+            StartCoroutine(Notification());
+
+        }
+        public void BedroomDoor()
+        {
+            bedroomObj.GetComponent<AudioSource>().Play();
+            bedroomObj.GetComponent<Animator>().Play("BedroomClose");
+            text = "The door closed!";
             StartCoroutine(Notification());
         }
 
@@ -32,6 +44,17 @@ namespace Interactions
         {
             text = "Door is locked!!";
             StartCoroutine(Notification());
+        }
+        public void AltarnateAnimation()
+        {
+            altarnate.GetComponent<Animator>().Play("KitchenAltarnate");
+            StartCoroutine(Destroy());
+        }
+
+        private IEnumerator Destroy()
+        {
+            yield return new WaitForSeconds(1.0f);
+            altarnate.SetActive(false);
         }
     }
 }

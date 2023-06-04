@@ -69,14 +69,14 @@ namespace Interactions {
                         firstTime = true;
                     }
 
-                    doorAnim.Play("DoorOpen", 0, 0.0f);
+                    doorAnim.Play("Bedroom", 0, 0.0f);
                     StartCoroutine(TextDestroy());
                     isDoorOpen = true;
                 }
                 else
                 {
                     textObject.GetComponent<Text>().text = "";
-                    doorAnim.Play("DoorClose", 0, 0.0f);
+                    doorAnim.Play("BedroomClose", 0, 0.0f);
                     isDoorOpen = false;
                     StartCoroutine(TextDestroy());
                 }
